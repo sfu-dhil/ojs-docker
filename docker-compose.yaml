@@ -1,0 +1,45 @@
+version: '3.8'
+services:
+  db:
+    container_name: ojs_db
+    image: mariadb:10.11
+    ports:
+      - "13306:3306"
+    volumes:
+      # persistence
+      - .data/mariadb:/var/lib/mysql
+      # config
+      - ./docker/mariadb/db.charset.conf:/etc/mysql/conf.d/charset.cnf
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: ojs
+      MYSQL_USER: ojs
+      MYSQL_PASSWORD: password
+    healthcheck:
+      test: mysql amplify -u amplify -ppassword -e 'SELECT 1;' || exit 1
+      interval: 2s
+      retries: 120
+
+  ojs:
+    container_name: ojs_app
+    image: pkpofficial/ojs:stable-3_4_0
+    ports:
+      - 8080:80
+    volumes:
+      # persistence
+      - .data/app/files:/var/www/files
+      - .data/app/public:/var/www/html/public
+      - .data/app/logs:/var/log/apache2
+      - .data/app/config.inc.php:/var/www/html/config.inc.php
+      - .data/app/plugins:/var/www/html/plugins
+      # config
+      - ./docker/app/php.custom.ini:/usr/local/etc/php/conf.d/custom.ini
+      - ./docker/app/ojs.conf:/etc/apache2/conf.d/ojs.conf
+    depends_on:
+      - db
+
+  mail:
+    container_name: ojs_mail
+    image: mailhog/mailhog:v1.0.1
+    ports:
+      - "8025:8025"

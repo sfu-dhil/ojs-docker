@@ -1,0 +1,9 @@
+# Editors
+/.idea
+.vscode
+
+# Docker
+.data
+
+# Mac DS_Store
+.DS_Store
