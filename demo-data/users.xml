@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PKPUsers xmlns="http://pkp.sfu.ca" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pkp.sfu.ca pkp-users.xsd">
+  <user_groups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pkp.sfu.ca pkp-users.xsd">
+    <user_group>
+      <role_id>16</role_id>
+      <context_id>1</context_id>
+      <is_default>true</is_default>
+      <show_title>true</show_title>
+      <permit_self_registration>false</permit_self_registration>
+      <permit_metadata_edit>true</permit_metadata_edit>
+      <name locale="en">Journal manager</name>
+      <abbrev locale="en">JM</abbrev>
+      <stage_assignments/>
+      <masthead>false</masthead>
+    </user_group>
+    <user_group>
+      <role_id>16</role_id>
+      <context_id>1</context_id>
+      <is_default>true</is_default>
+      <show_title>true</show_title>
+      <permit_self_registration>false</permit_self_registration>
+      <permit_metadata_edit>true</permit_metadata_edit>
+      <name locale="en">Journal editor</name>
+      <abbrev locale="en">JE</abbrev>
+      <stage_assignments>1:3:4:5</stage_assignments>
+      <masthead>true</masthead>
+    </user_group>
+    <user_group>
+      <role_id>16</role_id>
+      <context_id>1</context_id>
+      <is_default>true</is_default>
+      <show_title>true</show_title>
+      <permit_self_registration>false</permit_self_registration>
+      <permit_metadata_edit>true</permit_metadata_edit>
+      <name locale="en">Production editor</name>
+      <abbrev locale="en">ProdE</abbrev>
+      <stage_assignments>4:5</stage_assignments>
+      <masthead>false</masthead>
+    </user_group>
+    <user_group>
+      <role_id>17</role_id>
+      <context_id>1</context_id>
+      <is_default>true</is_default>
+      <show_title>true</show_title>
+      <permit_self_registration>false</permit_self_registration>
+      <permit_metadata_edit>true</permit_metadata_edit>
+      <name locale="en">Section editor</name>
+      <abbrev locale="en">SecE</abbrev>
+      <stage_assignments>1:3:4:5</stage_assignments>
+      <masthead>true</masthead>
+    </user_group>
+    <user_group>
+      <role_id>17</role_id>
+      <context_id>1</context_id>
+      <is_default>true</is_default>
+      <show_title>true</show_title>
+      <permit_self_registration>false</permit_self_registration>
+      <permit_metadata_edit>false</permit_metadata_edit>
+      <name locale="en">Guest editor</name>
+      <abbrev locale="en">GE</abbrev>
+      <stage_assignments>1:3:4:5</stage_assignments>
+      <masthead>false</masthead>
+    </user_group>
+    <user_group>
+      <role_id>4097</role_id>
+      <context_id>1</context_id>
+      <is_default>true</is_default>
+      <show_title>true</show_title>
+      <permit_self_registration>false</permit_self_registration>
+      <permit_metadata_edit>false</permit_metadata_edit>
+      <name locale="en">Copyeditor</name>
+      <abbrev locale="en">CE</abbrev>
+      <stage_assignments>4</stage_assignments>
+      <masthead>false</masthead>
+    </user_group>
+    <user_group>
+      <role_id>4097</role_id>
+      <context_id>1</context_id>
+      <is_default>true</is_default>
+      <show_title>true</show_title>
+      <permit_self_registration>false</permit_self_registration>
+      <permit_metadata_edit>false</permit_metadata_edit>
+      <name locale="en">Designer</name>
+      <abbrev locale="en">Design</abbrev>
+      <stage_assignments>5</stage_assignments>
+      <masthead>false</masthead>
+    </user_group>
+    <user_group>
+      <role_id>4097</role_id>
+      <context_id>1</context_id>
+      <is_default>true</is_default>
+      <show_title>true</show_title>
+      <permit_self_registration>false</permit_self_registration>
+      <permit_metadata_edit>false</permit_metadata_edit>
+      <name locale="en">Funding coordinator</name>
+      <abbrev locale="en">FC</abbrev>
+      <stage_assignments>1:3</stage_assignments>
+      <masthead>false</masthead>
+    </user_group>
+    <user_group>
+      <role_id>4097</role_id>
+      <context_id>1</context_id>
+      <is_default>true</is_default>
+      <show_title>true</show_title>
+      <permit_self_registration>false</permit_self_registration>
+      <permit_metadata_edit>false</permit_metadata_edit>
+      <name locale="en">Indexer</name>
+      <abbrev locale="en">IND</abbrev>
+      <stage_assignments>5</stage_assignments>
+      <masthead>false</masthead>
+    </user_group>
+    <user_group>
+      <role_id>4097</role_id>
+      <context_id>1</context_id>
+      <is_default>true</is_default>
+      <show_title>true</show_title>
+      <permit_self_registration>false</permit_self_registration>
+      <permit_metadata_edit>false</permit_metadata_edit>
+      <name locale="en">Layout Editor</name>
+      <abbrev locale="en">LE</abbrev>
+      <stage_assignments>5</stage_assignments>
+      <masthead>false</masthead>
+    </user_group>
+    <user_group>
+      <role_id>4097</role_id>
+      <context_id>1</context_id>
+      <is_default>true</is_default>
+      <show_title>true</show_title>
+      <permit_self_registration>false</permit_self_registration>
+      <permit_metadata_edit>false</permit_metadata_edit>
+      <name locale="en">Marketing and sales coordinator</name>
+      <abbrev locale="en">MS</abbrev>
+      <stage_assignments>4</stage_assignments>
+      <masthead>false</masthead>
+    </user_group>
+    <user_group>
+      <role_id>4097</role_id>
+      <context_id>1</context_id>
+      <is_default>true</is_default>
+      <show_title>true</show_title>
+      <permit_self_registration>false</permit_self_registration>
+      <permit_metadata_edit>false</permit_metadata_edit>
+      <name locale="en">Proofreader</name>
+      <abbrev locale="en">PR</abbrev>
+      <stage_assignments>5</stage_assignments>
+      <masthead>false</masthead>
+    </user_group>
+    <user_group>
+      <role_id>65536</role_id>
+      <context_id>1</context_id>
+      <is_default>true</is_default>
+      <show_title>true</show_title>
+      <permit_self_registration>false</permit_self_registration>
+      <permit_metadata_edit>false</permit_metadata_edit>
+      <name locale="en">Author</name>
+      <abbrev locale="en">AU</abbrev>
+      <stage_assignments>1:3:4:5</stage_assignments>
+      <masthead>false</masthead>
+    </user_group>
+    <user_group>
+      <role_id>65536</role_id>
+      <context_id>1</context_id>
+      <is_default>true</is_default>
+      <show_title>true</show_title>
+      <permit_self_registration>false</permit_self_registration>
+      <permit_metadata_edit>false</permit_metadata_edit>
+      <name locale="en">Translator</name>
+      <abbrev locale="en">Trans</abbrev>
+      <stage_assignments>1:3:4:5</stage_assignments>
+      <masthead>false</masthead>
+    </user_group>
+    <user_group>
+      <role_id>4096</role_id>
+      <context_id>1</context_id>
+      <is_default>true</is_default>
+      <show_title>true</show_title>
+      <permit_self_registration>false</permit_self_registration>
+      <permit_metadata_edit>false</permit_metadata_edit>
+      <name locale="en">Reviewer</name>
+      <abbrev locale="en">R</abbrev>
+      <stage_assignments>3</stage_assignments>
+      <masthead>true</masthead>
+    </user_group>
+    <user_group>
+      <role_id>1048576</role_id>
+      <context_id>1</context_id>
+      <is_default>true</is_default>
+      <show_title>true</show_title>
+      <permit_self_registration>false</permit_self_registration>
+      <permit_metadata_edit>false</permit_metadata_edit>
+      <name locale="en">Reader</name>
+      <abbrev locale="en">Read</abbrev>
+      <stage_assignments/>
+      <masthead>false</masthead>
+    </user_group>
+    <user_group>
+      <role_id>2097152</role_id>
+      <context_id>1</context_id>
+      <is_default>true</is_default>
+      <show_title>true</show_title>
+      <permit_self_registration>false</permit_self_registration>
+      <permit_metadata_edit>false</permit_metadata_edit>
+      <name locale="en">Subscription Manager</name>
+      <abbrev locale="en">SubM</abbrev>
+      <stage_assignments/>
+      <masthead>false</masthead>
+    </user_group>
+    <user_group>
+      <role_id>4097</role_id>
+      <context_id>1</context_id>
+      <is_default>true</is_default>
+      <show_title>true</show_title>
+      <permit_self_registration>false</permit_self_registration>
+      <permit_metadata_edit>false</permit_metadata_edit>
+      <name locale="en">Editorial Board Member</name>
+      <abbrev locale="en">EBM</abbrev>
+      <stage_assignments/>
+      <masthead>true</masthead>
+    </user_group>
+  </user_groups>
+  <users>
+    <user>
+      <givenname locale="en">Journal Manager</givenname>
+      <familyname locale="en">One</familyname>
+      <email>journal_manager@journal_manager.com</email>
+      <username>journal_manager</username>
+      <password is_disabled="false" must_change="true" encryption="sha1">
+        <value>$2y$10$v4Euaq2gHTYthM7yqHaOBO2bnzJabvuhSZwyuiVGsQStFL6WlW2Bm</value>
+      </password>
+      <date_registered>2000-01-01 11:11:11</date_registered>
+      <date_last_login>2000-01-01 11:11:11</date_last_login>
+      <inline_help>true</inline_help>
+      <user_user_group>
+        <user_group_ref>Journal manager</user_group_ref>
+        <masthead>false</masthead>
+      </user_user_group>
+    </user>
+    <user>
+      <givenname locale="en">Journal Manager</givenname>
+      <familyname locale="en">Two</familyname>
+      <email>journal_manager_2@journal_manager.com</email>
+      <username>journal_manager_2</username>
+      <password is_disabled="false" must_change="true" encryption="sha1">
+        <value>$2y$10$v4Euaq2gHTYthM7yqHaOBO2bnzJabvuhSZwyuiVGsQStFL6WlW2Bm</value>
+      </password>
+      <date_registered>2000-01-01 11:11:11</date_registered>
+      <date_last_login>2000-01-01 11:11:11</date_last_login>
+      <inline_help>true</inline_help>
+      <user_user_group>
+        <user_group_ref>Journal manager</user_group_ref>
+        <masthead>false</masthead>
+      </user_user_group>
+    </user>
+    <user>
+      <givenname locale="en">Journal Manager</givenname>
+      <familyname locale="en">Three</familyname>
+      <email>journal_manager_3@journal_manager.com</email>
+      <username>journal_manager_3</username>
+      <password is_disabled="false" must_change="true" encryption="sha1">
+        <value>$2y$10$v4Euaq2gHTYthM7yqHaOBO2bnzJabvuhSZwyuiVGsQStFL6WlW2Bm</value>
+      </password>
+      <date_registered>2000-01-01 11:11:11</date_registered>
+      <date_last_login>2000-01-01 11:11:11</date_last_login>
+      <inline_help>true</inline_help>
+      <user_user_group>
+        <user_group_ref>Journal manager</user_group_ref>
+        <masthead>false</masthead>
+      </user_user_group>
+    </user>
+  </users>
+</PKPUsers>

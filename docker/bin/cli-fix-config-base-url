@@ -1,0 +1,7 @@
+#!/bin/sh
+
+echo "[CLI Fix Config Base Url (for single journal installs)]"
+
+cp ${PKP_CONF} /tmp/config.inc.php
+sed -i "/^base_url/c\base_url = \"$BASE_URL\"\nbase_url[index] = \"$BASE_URL\/index\"\nbase_url[$JOURNAL_ACRONYM] = \"$BASE_URL\"" /tmp/config.inc.php
+cp -f /tmp/config.inc.php ${PKP_CONF}

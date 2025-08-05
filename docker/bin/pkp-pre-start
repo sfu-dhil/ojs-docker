@@ -1,0 +1,28 @@
+#!/bin/sh
+
+echo "[PKP Pre-Start] Enforcing configs..."
+
+echo "================= ENV VARIABLES =================="
+echo "DOMAIN:          [${DOMAIN}]"
+echo "PKP_CONF:        [${PKP_CONF}]"
+echo "PKP_WEB_CONF:    [${PKP_WEB_CONF}]"
+echo "=================================================="
+
+# Just in case somebody likes to change the document root:
+# sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
+# sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
+
+echo "sed -i -e \"s/^#ServerName.*/ServerName ${DOMAIN}/g\" /etc/apache2/apache2.conf"
+cp /etc/apache2/apache2.conf /tmp/apache2.conf
+sed -i -e "s/^#ServerName.*/ServerName ${DOMAIN}/g" /tmp/apache2.conf
+cp -f /tmp/apache2.conf /etc/apache2/apache2.conf
+
+echo "sed -i -e \"s/restful_urls = Off/restful_urls = On/g\" $PKP_CONF"
+cp ${PKP_CONF} /tmp/config.inc.php
+sed -i -e "s/restful_urls = Off/restful_urls = On/g" /tmp/config.inc.php
+cp -f /tmp/config.inc.php ${PKP_CONF}
+
+echo "sed -i -e \"s/enable_cdn = On/enable_cdn = Off/g\" $PKP_CONF"
+cp ${PKP_CONF} /tmp/config.inc.php
+sed -i -e "s/enable_cdn = On/enable_cdn = Off/g" /tmp/config.inc.php
+cp -f /tmp/config.inc.php ${PKP_CONF}

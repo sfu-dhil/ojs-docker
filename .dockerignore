@@ -1,5 +1,5 @@
 # Editors
-/.idea
+.idea
 .vscode
 
 # Docker
@@ -7,3 +7,8 @@
 
 # Mac DS_Store
 .DS_Store
+
+node_modules
+
+# temp cookie storage
+scripts/admin_script_cookie.txt

@@ -1,45 +1,52 @@
-version: '3.8'
 services:
   db:
     container_name: ojs_db
-    image: mariadb:10.11
+    image: postgis/postgis:17-3.5
+    # postgis only supports the linux/amd64 platform
+    platform: linux/amd64
     ports:
-      - "13306:3306"
+      - "15432:5432"
     volumes:
-      # persistence
-      - .data/mariadb:/var/lib/mysql
-      # config
-      - ./docker/mariadb/db.charset.conf:/etc/mysql/conf.d/charset.cnf
+      - .data/postgres:/var/lib/postgresql/data/pgdata
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: ojs
-      MYSQL_USER: ojs
-      MYSQL_PASSWORD: password
+      PGDATA: /var/lib/postgresql/data/pgdata
+      POSTGRES_DB: ojs
+      POSTGRES_USER: ojs
+      POSTGRES_PASSWORD: password
     healthcheck:
-      test: mysql amplify -u amplify -ppassword -e 'SELECT 1;' || exit 1
+      test: pg_isready -U ojs -d ojs && psql -U ojs -d ojs -c 'SELECT 1;' || exit 1
       interval: 2s
       retries: 120
 
-  ojs:
+  app:
     container_name: ojs_app
-    image: pkpofficial/ojs:stable-3_4_0
+    # image: dhil/ojs
+    build:
+      context: .
+    platform: linux/amd64
     ports:
       - 8080:80
     volumes:
+      # persistence config
+      - .data/app/config.inc.php:/var/www/html/config.inc.php
       # persistence
       - .data/app/files:/var/www/files
       - .data/app/public:/var/www/html/public
       - .data/app/logs:/var/log/apache2
-      - .data/app/config.inc.php:/var/www/html/config.inc.php
-      - .data/app/plugins:/var/www/html/plugins
-      # config
-      - ./docker/app/php.custom.ini:/usr/local/etc/php/conf.d/custom.ini
-      - ./docker/app/ojs.conf:/etc/apache2/conf.d/ojs.conf
+      # Custom theme/plugin development (override for active development)
+      # - ./themes/<THEME NAME>:/var/www/html/plugins/themes/<THEME NAME>
+      # - ./plugins/<PLUGIN NAME>:/var/www/html/plugins/<PLUGIN NAME>
+      # demo data for import
+      - ./demo-data:/demo-data
+    environment:
+      - DOMAIN=j1.localhost
+      - JOURNAL_ACRONYM=j1
+      - HTTPS=off
     depends_on:
       - db
 
   mail:
     container_name: ojs_mail
-    image: mailhog/mailhog:v1.0.1
+    image: jcalonso/mailhog:v1.0.1
     ports:
       - "8025:8025"
