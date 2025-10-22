@@ -31,7 +31,7 @@ sed -i '' -e "s/default = sendmail/default = smtp/g" .data/app/config.inc.php
 sed -i '' -e "s/sendmail_path =/; sendmail_path =/g" .data/app/config.inc.php
 sed -i '' -e "s/; smtp = On/smtp = On/g" .data/app/config.inc.php
 sed -i '' -e "s/; smtp_server = .*/smtp_server = mail/g" .data/app/config.inc.php
-sed -i '' -e "s/; smtp_port = 25/smtp_port = 8025/g" .data/app/config.inc.php
+sed -i '' -e "s/; smtp_port = 25/smtp_port = 1025/g" .data/app/config.inc.php
 
 # update the `config.inc.php` with some config secrets
 sed -i '' -e "s/^salt = .*$/salt = \"$(openssl rand -hex 48 | tr -d '\n')\"/g" .data/app/config.inc.php
@@ -54,11 +54,16 @@ BASE_URL=http://j1.localhost:8080 JOURNAL_ACRONYM=j1 JOURNAL_NAME="Journal 1" SI
 # fix base url
 docker exec -e BASE_URL=http://j1.localhost:8080 ojs_app /usr/local/bin/cli-fix-config-base-url
 
-# populate default users and journal content
+# populate default users
 docker exec ojs_app php tools/importExport.php UserImportExportPlugin import /demo-data/users.xml j1
+
+# populate default journal
 docker exec ojs_app php tools/importExport.php NativeImportExportPlugin import /demo-data/issue.xml j1 admin
+# Or populate default podcast
+docker exec ojs_app php tools/importExport.php PodcastRssImportPlugin --journal-path=j1 --rss-url=<RSS FEED URL>
 ```
 >Note: this uses a custom install scripts (this a above and beyond the the standard bin `pkp-cli-install` script)
+
 
 Then visit `http://j1.localhost:8080`
 
@@ -82,15 +87,15 @@ You can also override default plugins/themes by using the same plugin/theme name
 
 ## Add customized themes/plugins
 
-Add new `<NAME>` theme/plugin dir into to the `themes`/`plugins` folders (don't compress them).
+Add new `<NAME>` into dir into to the `plugins/themes`/`plugins/generic`/etc folders (don't compress them).
 
 Fix potential permission issues
 ```bash
-sudo chmod -R 775 plugins themes
-sudo chown -R 33:33 plugins themes
+sudo chmod -R 775 plugins
+sudo chown -R 33:33 plugins
 ```
 
 ## Add external (non-customized) themes/plugins
 
-Add new `<NAME>-<VERSION>.tar.gz` themes/plugins to the `themes`/`plugins` dir (leave it `tar.gz`)
-Update the `Dockerfile` adding `plugins/<NAME>-<VERSION>.tar.gz`/`themes/<NAME>-<VERSION>.tar.gz` to the list in the proper `ADD` steps near the end.
+Add new `<NAME>-<VERSION>.tar.gz` themes/plugins to the `plugins/themes`/`plugins/generic`/etc dir (leave it `tar.gz`)
+Update the `Dockerfile` adding `plugins/generic/<NAME>-<VERSION>.tar.gz`/`plugins/themes/<NAME>-<VERSION>.tar.gz`/etc to the list in the proper `ADD` steps near the end.

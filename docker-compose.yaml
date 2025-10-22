@@ -34,8 +34,9 @@ services:
       - .data/app/public:/var/www/html/public
       - .data/app/logs:/var/log/apache2
       # Custom theme/plugin development (override for active development)
-      # - ./themes/<THEME NAME>:/var/www/html/plugins/themes/<THEME NAME>
-      # - ./plugins/<PLUGIN NAME>:/var/www/html/plugins/<PLUGIN NAME>
+      - ./plugins/generic/podcast:/var/www/html/plugins/generic/podcast
+      # don't override plugin vendor deps
+      - /var/www/html/plugins/generic/podcast/vendor
       # demo data for import
       - ./demo-data:/demo-data
     environment:

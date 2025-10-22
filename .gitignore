@@ -10,6 +10,9 @@
 
 # themes/plugins
 node_modules
+vendor
 
 # temp cookie storage
 scripts/admin_script_cookie.txt
+
+plugins/generic/podcast
