@@ -8,7 +8,10 @@
 # Mac DS_Store
 .DS_Store
 
+# themes/plugins
 node_modules
+vendor
+plugins/generic/podcast
 
 # temp cookie storage
 scripts/admin_script_cookie.txt

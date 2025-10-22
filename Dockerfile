@@ -2,7 +2,12 @@
 FROM pkpofficial/ojs:3_5_0-1
 
 # disable sll (server is ssl terminated)
-RUN a2dismod ssl
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends libapache2-mod-xsendfile \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
+    && a2enmod rewrite headers \
+    && a2dismod ssl
 
 # health check
 COPY --chown=www-data:www-data --chmod=775 docker/health.php /var/www/html/health.php
@@ -16,14 +21,14 @@ COPY --chown=www-data:www-data --chmod=775 docker/php.custom.ini /usr/local/etc/
 COPY --chown=www-data:www-data --chmod=775 docker/pkp.conf /etc/apache2/conf-enabled/pkp.conf
 COPY --chown=www-data:www-data --chmod=775 docker/apache.htaccess /var/www/html/.htaccess
 
-# themes + plugins
+# plugins/themes
 ADD --chown=www-data:www-data --chmod=775 \
-#     plugins/<NAME>-<VERSION>.tar.gz \
-    plugins \
-    /var/www/html/plugins/
+    plugins/generic/podcast-v1_0_0-0.tar.gz \
+    plugins/generic \
+    /var/www/html/plugins/generic/
 ADD --chown=www-data:www-data --chmod=775 \
-#     themes/<NAME>-<VERSION>.tar.gz \
-    themes \
+    plugins/themes/material-v3_1_0-0.tar.gz \
+    plugins/themes \
     /var/www/html/plugins/themes/
 
 # make sure permission are set correctly
